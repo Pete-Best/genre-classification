@@ -62,6 +62,14 @@ FINISH THIS LATER
 
 **Section 4.2: Creating Models** 
 
+1. Import data- 
+
+   veclyrics = np.load('veclyrics.pkl',allow_pickle = True)
+   df = pd.read_pickle("response.pkl")
+   X_train, X_test, y_train, y_test = train_test_split(veclyrics, df['pop'], test_size = 0.2, random_state = 1)
+   
+   split for each genre ('pop' in example)
+
 **Section 4.3: Comparing and Selecting Model** 
 
 **Section 4.3: Validating on New Dataset** 
