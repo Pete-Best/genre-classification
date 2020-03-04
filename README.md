@@ -48,7 +48,9 @@ FINISH THIS LATER
 
 ## 4. Methodology
 
-**Section 4.1: Cleaning and Pre-Processing** 
+**Section 4.1: Pulling Genre Date From Spotify**
+
+**Section 4.2: Cleaning and Pre-Processing** 
 
 1. Deleted all round brackets, square brackets, and text within square brackets, and line breaks
 2. Removed non-english songs. Found the probability of a song being English and removed all songs with a probability lower than 0.5
