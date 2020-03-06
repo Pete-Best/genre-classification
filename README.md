@@ -25,14 +25,14 @@
 
 `songs_wv_model`:
 
+`veclyrics.pkl`: sparse matrix of the song lyrics
+
 
 FINISH THIS LATER
 
-## 3. Metadata for (INSERT FINAL FILE NAME HERE):
+## 3. Metadata for "response.pkl":
  - artist: Artist name
  - song: Name of song
- - link: Link to a webpage with the song (for reference). This is to be concatenated with http://www.lyricsfreak.com to form a real URL.
- - text: Lyrics of song (Songs with a probability of being non-english lower than 0.50  have been removed. Text within square brackets have been removed and line breaks have been removed)
  - genres: Genre of artist as pulled from Spotify
  - rock: Does the genre list contain the substring: “rock”?  (0 if the substring is not present in genre, 1 if it present)
  - singer-songwriter: Does the genre list contain the substring: “singer-songwriter”? (0 if the substring is not present in genre, 1 if it present)
@@ -41,10 +41,7 @@ FINISH THIS LATER
  - folk: Does the genre list contain the substring: “folk”? (0 if the substring is not present in genre, 1 if it present)
  - country: Does the genre list contain the substring: “country”? (0 if the substring is not present in genre, 1 if it present)
  - hip hop/rap: Does the genre list contain the substring: “hip hop” or "rap"? (0 if the substring is not present in genre, 1 if it present)
- - text_preprocessed: Text has been lemmatized and preprocessed (different inflected forms of a word grouped together, lowercased)
- - tokens: Tokenized version of text_preprocessed with stop-word removed (Stop-words taken from nltk stopwords.words('english'))
- - stem_str: Un-tokenized version of stem_str
- 
+ - tokenstring: Original song lyrics that have been cleaned, lemmatized, and tokenized. Cleaning process is defined below in Section 4. Methodology.
 
 ## 4. Methodology
 
@@ -65,10 +62,14 @@ FINISH THIS LATER
 1. Import data- 
 
    veclyrics = np.load('veclyrics.pkl',allow_pickle = True)
+   
+   
    df = pd.read_pickle("response.pkl")
+   
+   
    X_train, X_test, y_train, y_test = train_test_split(veclyrics, df['pop'], test_size = 0.2, random_state = 1)
    
-   split for each genre ('pop' in example)
+    - split for each genre ('pop' in example)
 
 **Section 4.3: Comparing and Selecting Model** 
 
