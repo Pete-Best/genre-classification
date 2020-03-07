@@ -1,12 +1,7 @@
-
-
-
-##### A FINAL PROJECT SUBMITTED TO THE UNIVERSITY OF CHICAGO IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE COURSE OF MSCA 31008.3 DATA MINING PRINCIPLES
-
 ##### Peter Eusebio, Lola Johnston, Brea Beals, Jerry Sha, Roy Xie
 ##### Winter 2020
 
-#### GitHub private repository: https://github.com/Pete-Best/genre-classification
+#### GitHub repository: https://github.com/Pete-Best/genre-classification
 
 
 ## 1. Executive summary
