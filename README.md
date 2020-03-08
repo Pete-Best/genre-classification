@@ -54,17 +54,21 @@ FINISH THIS LATER
 
 **Section 4.2: Creating Models** 
 
-1. Import data- 
+1. Code to import split explanatory and response data- 
 
-   veclyrics = np.load('veclyrics.pkl',allow_pickle = True)
-   
-   
-   df = pd.read_pickle("response.pkl")
-   
-   
-   X_train, X_test, y_train, y_test = train_test_split(veclyrics, df['pop'], test_size = 0.2, random_state = 1)
-   
-    - split for each genre ('pop' in example)
+#import data
+
+X_train = pd.read_pickle('veclyrics_doc2vec_train.pkl')
+
+X_test = pd.read_pickle('veclyrics_doc2vec_test.pkl')
+
+y_train_all = pd.read_pickle('response_doc2vec_train.pkl')
+
+y_test_all = pd.read_pickle('response_doc2vec_test.pkl')
+
+y_train_all = y_train_all.iloc[:,3:10]
+
+y_test_all = y_test_all.iloc[:,3:10]
 
 **Section 4.3: Comparing and Selecting Model** 
 
