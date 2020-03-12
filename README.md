@@ -22,6 +22,17 @@
 
 `veclyrics.pkl`: sparse matrix of the song lyrics
 
+(DELETE THIS LINE LATER: BREA'S SAVED DOCS BELOW)
+
+`Genres_EDA.ipynb`: This notebook details the Exploratory Data Analysis of `songdata.csv`
+
+`lyrics.csv`: New dataset with songs, artist, genres, and lyrics to act as a holdout set. If dataset not present in the Github for size reasons, it can be found here: https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics
+
+`DM_Project_Holdout_Predictions.ipynb`: This file uses `lyrics.csv`, with songs, artist, genres, and lyrics. The dataset is sampled, cleaned, and pre-processed just as our original dataset was. We then run our gradient boost model, `gbtune.sav` on the data to explore the predictive nature of our models. 
+
+`response_doc2vec_holdout.pkl`: Response data that orignated from `DM_Project_Holdout_Predictions.ipynb`
+
+`veclyrics_doc2vec_holdout.pkl`: Prediction data that orignated from `DM_Project_Holdout_Predictions.ipynb`
 
 FINISH THIS LATER
 
