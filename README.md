@@ -2,88 +2,102 @@
 ##### Winter 2020
 
 #### GitHub repository: https://github.com/Pete-Best/genre-classification
-
-
-## 1. Executive summary
-
-## 2. Files in the repository
-
-`README.md`: The readme file.
-
-`DM_Project_Data_Cleaning.ipynb`: Jupyter Notebook file cleaning songdata.csv, extracting features, and preparing it for modeling  
-
-`songdata.csv`: Original data with artist, song name, link, and lyrics for each song  
-
-`genre collection.ipynb`: Jupyter Notebook pulling genres from spotify INSERT PETER'S DESCRIPTION 
-
-`genres.pkl`:
-
-`songs_wv_model`:
-
-`veclyrics.pkl`: sparse matrix of the song lyrics
-
-(DELETE THIS LINE LATER: BREA'S SAVED DOCS BELOW)
+------------------------------------------------------------------------------------------------------------------------------
+## Files in the repository:
+`DM_Project_Holdout_Predictions.ipynb`: This file uses `lyrics.csv`, with songs, artist, genres, and lyrics. The dataset is sampled, cleaned, and pre-processed just as our original dataset was. We then run our gradient boost model, `gbtune.sav` on the data to explore the predictive nature of our models. 
 
 `Genres_EDA.ipynb`: This notebook details the Exploratory Data Analysis of `songdata.csv`
 
-`lyrics.csv`: New dataset with songs, artist, genres, and lyrics to act as a holdout set. If dataset not present in the Github for size reasons, it can be found here: https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics
+‘Model Evaluation-1.ipynb’:  This notebook evaluates models that were previously developed.
 
-`DM_Project_Holdout_Predictions.ipynb`: This file uses `lyrics.csv`, with songs, artist, genres, and lyrics. The dataset is sampled, cleaned, and pre-processed just as our original dataset was. We then run our gradient boost model, `gbtune.sav` on the data to explore the predictive nature of our models. 
+`Models_LJ_Clean.ipynb`: This notebook contains ridge classification modeling
 
-`response_doc2vec_holdout.pkl`: Response data that orignated from `DM_Project_Holdout_Predictions.ipynb`
+`Models_PE.ipynb`:  This notebook uses logistic regression, random forest, and gradient boosting
 
-`veclyrics_doc2vec_holdout.pkl`: Prediction data that orignated from `DM_Project_Holdout_Predictions.ipynb`
+`README.md`: The readme file.
 
-FINISH THIS LATER
+`RidgeBalanced.sav`: this is the trained ridge classifier
 
-## 3. Metadata for "response.pkl":
- - artist: Artist name
- - song: Name of song
- - genres: Genre of artist as pulled from Spotify
- - rock: Does the genre list contain the substring: “rock”?  (0 if the substring is not present in genre, 1 if it present)
- - singer-songwriter: Does the genre list contain the substring: “singer-songwriter”? (0 if the substring is not present in genre, 1 if it present)
- - pop: Does the genre list contain the substring: “pop”? (0 if the substring is not present in genre, 1 if it present)
- - metal: Does the genre list contain the substring: “metal”? (0 if the substring is not present in genre, 1 if it present)
- - folk: Does the genre list contain the substring: “folk”? (0 if the substring is not present in genre, 1 if it present)
- - country: Does the genre list contain the substring: “country”? (0 if the substring is not present in genre, 1 if it present)
- - hip hop/rap: Does the genre list contain the substring: “hip hop” or "rap"? (0 if the substring is not present in genre, 1 if it present)
- - tokenstring: Original song lyrics that have been cleaned, lemmatized, and tokenized. Cleaning process is defined below in Section 4. Methodology.
+`balance_DM_Project_Data_Cleaning_Pre_Split_Doc2Vec.ipynb`: Jupyter Notebook file cleaning songdata.csv, extracting features, preparing it for modeling, and balancing on the rock genre label.
 
-## 4. Methodology
+`gb_pred_balance.pkl`: these are predictions from gradient boosting on rock balanced X test for evaluation
 
-**Section 4.1: Pulling Genre Date From Spotify**
+`gbtune.sav`: this is the tuned gradient boosting classifier
 
-**Section 4.2: Cleaning and Pre-Processing** 
+`genre collection.ipynb`: Jupyter Notebook calling Spotify API to search for each artist name from songdata.csv and extract all genre tags corresponding to the first search result for that name
 
-1. Deleted all round brackets, square brackets, and text within square brackets, and line breaks
-2. Removed non-english songs. Found the probability of a song being English and removed all songs with a probability lower than 0.5
-3. Lemmatized and preprocessed the text data using gensim simple_preprocess and saved under "text_preprocessed"
-4. Tokenized the data and saved under "tokens"
-5. Removed stop words from "tokens" using the package stopwords from ntlk
-6. Ran a word2vec model to explore relationships between words
-7. Applied Count Vectorizer() to transform "tokens" into vectors
+`genres.pkl`: output of genre collection.ipynb, list of genre tags for each artist
 
-**Section 4.2: Creating Models** 
+`holdoutresponse.pkl`:This pkl contains the response data generated from running `gbtune` on the holdout dataset.
 
-1. Code to import split explanatory and response data- 
+`response_balanced_rock_doc2vec_test.pkl`: The pkl contains the genres of each song in the train set.
 
-#import data
+`response_balanced_rock_doc2vec_train.pkl`: The pkl contains the genres of each song in the test set.
 
-X_train = pd.read_pickle('veclyrics_doc2vec_train.pkl')
+`response_doc2vec_holdout.pkl`: Response data from the holdout data 
 
-X_test = pd.read_pickle('veclyrics_doc2vec_test.pkl')
+`DM_Project_Holdout_Predictions.ipynb`: this notebook processes the holdout data and evaluates model performance predicting holdout genre with holdout lyrics
 
-y_train_all = pd.read_pickle('response_doc2vec_train.pkl')
+`response_doc2vec_train.pkl`: this contains the train genres for a set of songs on an unbalanced dataset
 
-y_test_all = pd.read_pickle('response_doc2vec_test.pkl')
+`response_doc2vec_test.pkl`: this contains the test genres for a set of songs on an  unbalanced dataset
 
-y_train_all = y_train_all.iloc[:,3:10]
+`rf_pred_balance.pkl`: this is the output of random forest using rock balanced data
 
-y_test_all = y_test_all.iloc[:,3:10]
+`rfmulti.sav`: this is the trained random forest classifier
 
-**Section 4.3: Comparing and Selecting Model** 
+`ridge_y_pred.sav`: this is the output of the ridge classifier using rock balanced data
 
-**Section 4.3: Validating on New Dataset** 
+`songdata.csv`: Original data with artist, song name, link, and lyrics for each song  
+`veclyrics_balanced_rock_doc2vec_test.pkl`: test array of processed lyrics with rock column balanced
 
+`veclyrics_balanced_rock_doc2vec_train.pkl`: train array of processed lyrics with rock column balanced
 
+`veclyrics_doc2vec_holdout.pkl`: explanatory data from holdout set 
 
+`y_pred_prob_gb.pkl`: probability output from gradient boosting for evaluation notebook
+
+`y_pred_prob_rf.pkl`: probability output from random forest for evaluation notebook
+
+------------------------------------------------------------------------------------------------------------------------------
+
+## Methodology
+
+**Section 1: Pulling Genre Date From Spotify**
+Jupyter Notebook calls Spotify API to search for each artist name from songdata.csv and extract all genre tags corresponding to the first search result for that name
+**Section 2 EDA**
+Explored different aspects of the dataset including: 
+Songs in each genre
+Top artists in each genre
+Most frequently used words in each genre
+Profanity usage in each genre
+Multi-label artists and single-label artists
+Sentiment analysis
+**Section 3: Cleaning and Pre-Processing** 
+Attempted to mitigate the imbalance in our labels by using random undersampling to bring labels closer to an even split
+Basic cleaning including deleted all round brackets, square brackets, and text within square brackets, and line breaks
+ Removed non-english songs. Found the probability of a song being English and removed all songs with a probability lower than 0.5
+Lemmatized and preprocessed the text data using gensim simple_preprocess as well as tokenization
+Removed stop words from "tokens" using the package stopwords from ntlk
+ Ran a doc2vec model to extract numeric feature from words
+
+**Section 4: Creating Models** 
+Models are trained in the following files:
+`Models_LJ_Clean.ipynb`
+`Models_PE.ipynb`
+
+**Section 5: Comparing and Selecting Model** 
+We selected several metrics for model evaluation and created a function that would take our model predictions and run the full suite of evaluations for each. The metrics used are:
+classification report
+confusion matrix
+ROC curve
+Matthews Correlation Coefficient
+Some additional metrics we experimented with but did not present include Hamming Loss (for evaluating partially correct predictions in multilabel predictions) and Jaccard Similarity.
+
+**Section 6: Validating on New Dataset** 
+Downloaded dataset from https://www.kaggle.com/gyani95/380000-lyrics-from-metrolyrics and randomly subsetted 1% of the data for use in running our models and evaluating since the dataset was so large
+Cleaned, pre-processed, lemmatized and tokenized in the same way the original dataset was prepared
+This dataset was too messy to run langdetect correctly, so instead we removed all rows containing several different commonly used words in other languages as a way of detecting non-english songs. Explored any remaining row that did not contain the word “the” to confirm
+Removed all songs with less than 15 words as they were likely to be some form of “instrumental” song with no lyrics. 
+Removed stopwords and ran doc2vec and continued preparation the same way we did on the original data
+Ran `gbtune.sav` on the predictors to generate response data `holdoutresponse.pkl` and evaluated the predictions as compared to the true labels
