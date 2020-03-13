@@ -5,8 +5,6 @@
 ------------------------------------------------------------------------------------------------------------------------------
 ## Files in the repository:
 
-`Data_Mining_FinalProject_v4.pdf`: Pdf version of our final presentation
-
 `DM_Project_Holdout_Predictions.ipynb`: This file uses `lyrics.csv`, with songs, artist, genres, and lyrics. The dataset is sampled, cleaned, and pre-processed just as our original dataset was. We then run our gradient boost model, `gbtune.sav` on the data to explore the predictive nature of our models. 
 
 `Genres_EDA.ipynb`: This notebook details the Exploratory Data Analysis of `songdata.csv`
