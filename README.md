@@ -25,6 +25,8 @@
 
 `gbtune.sav`: this is the tuned gradient boosting classifier
 
+`Genre_Classification_Slides.pdf`: presentation slides
+
 `genre collection.ipynb`: Jupyter Notebook calling Spotify API to search for each artist name from songdata.csv and extract all genre tags corresponding to the first search result for that name
 
 `genres.pkl`: output of genre collection.ipynb, list of genre tags for each artist
